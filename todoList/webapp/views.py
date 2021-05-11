@@ -1,6 +1,6 @@
 from django.forms import modelform_factory
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 # Create your views here.
 from task.forms import TaskForm
@@ -24,3 +24,15 @@ def create(request):
     else:
         formTask = TaskForm()
     return render(request, 'create.html', {'formTask': formTask})
+
+def edit(request, id):
+    task = get_object_or_404(Task, pk=id)
+    if request.method == 'POST':
+        formTask = TaskForm(request.POST, instance=task)
+        if formTask.is_valid():
+            formTask.save()
+            return redirect('home')
+    else:
+
+        formTask = TaskForm(instance=task)
+    return render(request, 'edit.html', {'formTask': formTask})
