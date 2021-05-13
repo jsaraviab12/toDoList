@@ -56,9 +56,10 @@ def deleteFinishedTask(request, id):
 
 def finish(request, id):
     task = get_object_or_404(Task, pk=id)
-    tassk = task.id
+    tassk = int(task.id)
     taskName = task.name
     taskStartTime = task.startTime
     taskEndTime = task.endTime
-    Historial.objects.create(name=taskName,startTime=taskStartTime, endTime=taskEndTime, task_id=tassk)
+    Historial.objects.create(name=taskName,startTime=taskStartTime, endTime=taskEndTime)
+    task.delete()
     return redirect('home')
