@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from webapp.views import home, create, edit, delete, history, deleteFinishedTask
+from webapp.views import home, create, edit, delete, history, deleteFinishedTask, finish
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +25,6 @@ urlpatterns = [
     path('edit/<int:id>', edit),
     path('delete/<int:id>', delete),
     path('history.html/', history),
-    path('history.html/deleteFinishedTask/<int:id>', deleteFinishedTask)
+    path('history.html/deleteFinishedTask/<int:id>', deleteFinishedTask),
+    path('finish/<int:id>', finish)
 ]
