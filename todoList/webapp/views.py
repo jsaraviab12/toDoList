@@ -4,8 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 # Create your views here.
 from task.forms import TaskForm
-from task.models import Task
-
+from task.models import Task, Historial
 
 
 def home(request):
@@ -36,3 +35,13 @@ def edit(request, id):
 
         formTask = TaskForm(instance=task)
     return render(request, 'edit.html', {'formTask': formTask})
+
+def delete(request, id):
+    task = get_object_or_404(Task, pk=id)
+    if task:
+        task.delete()
+    return redirect('home')
+
+def history(request):
+    history_number = Historial.objects.count()
+    return render(request, 'history.html', {'history_number': history_number})

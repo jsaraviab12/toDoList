@@ -5,6 +5,9 @@
     <title>To Do List</title>
 </head>
 <body>
+<div>
+    <a href="history.html">Historial</a>
+</div>
 <h1>To do List</h1>
 <div><a href="create.html">Crear nueva tarea</a></div>
 <div>Numero de personas {{Task_number}}</div>
@@ -26,6 +29,7 @@
             <td>{{task.startTime}}</td>
             <td>{{task.endTime}}</td>
             <td><a href="edit/{{task.id}}">Editar</a></td>
+            <td><a href="delete/{{task.id}}">Eliminar</a></td>
         </tr>
       {% endfor %}
       </tbody>

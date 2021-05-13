@@ -16,11 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from webapp.views import home, create, edit
+from webapp.views import home, create, edit, delete, history
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path ('', home, name='home'),
     path ('create.html/', create),
     path('edit/<int:id>', edit),
+    path('delete/<int:id>', delete),
+    path('history.html/', history),
 ]
