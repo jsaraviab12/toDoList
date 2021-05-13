@@ -8,6 +8,31 @@
 <div>
 <h1>Numero de tareas completadas: {{history_number}}</h1>
 </div>
+<div>
+     <table>
+      <thead>
+      <tr>
+          <th>Id</th>
+          <th>Id de tarea</th>
+          <th>Name</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for finishedTask in finishedTasks %}
+        <tr>
+            <td>{{finishedTask.id}}</td>
+            <td>{{finishedTask.task}}</td>
+            <td>{{finishedTask.name}}</td>
+            <td>{{finishedTask.startTime}}</td>
+            <td>{{finishedTask.endTime}}</td>
+
+            <td><a href="deleteFinishedTask/{{finishedTask.id}}">Eliminar</a></td>
+        </tr>
+      {% endfor %}
+      </tbody>
+</div>
 
 </body>
 </html>

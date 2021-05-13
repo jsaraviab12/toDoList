@@ -43,5 +43,12 @@ def delete(request, id):
     return redirect('home')
 
 def history(request):
+    finishedTasks = Historial.objects.all()
     history_number = Historial.objects.count()
-    return render(request, 'history.html', {'history_number': history_number})
+    return render(request, 'history.html', {'finishedTasks': finishedTasks, 'history_number': history_number})
+
+def deleteFinishedTask(request, id):
+    task = get_object_or_404(Historial, pk=id)
+    if task:
+        task.delete()
+    return redirect('home')
